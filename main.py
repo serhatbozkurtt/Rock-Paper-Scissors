@@ -45,11 +45,19 @@ def mix2():
 
     winwin(user_choice)
 
+score1 = 0
+score2 = 0
 w_label = Label(root, text="")
+user1_score = Label(root, text=score1)
+user2_score = Label(root, text=score2)
 
 
 def winwin(text):
     global w_label
+    global score1
+    global score2
+    global user1_score
+    global user2_score
     oyuncu1 = mix1()
     oyuncu2 = text
 
@@ -57,6 +65,8 @@ def winwin(text):
     w_label.grid_forget()
     w_label.destroy()
 
+    # user1_score.grid_forget()
+    # user2_score.destroy()
     # print(oyuncu1)
     # print(oyuncu2)
     # print(image_list[0])
@@ -71,28 +81,48 @@ def winwin(text):
         w_label = Label(root, text="Player 1 win")
         w_label.grid(row=4, column=1)
         w_label.place(x=250, y=250)
+        score1 +=1
+        user1_score = Label(root, text=score1)
+        user1_score.grid(row=5, column=0)
     elif oyuncu1 == image_list[0] and oyuncu2 == image_list[1]:
         w_label = Label(root, text="Player 2 win")
         w_label.grid(row=4, column=1)
         w_label.place(x=250, y=250)
+        score2 +=1
+        user2_score = Label(root, text=score2)
+        user2_score.grid(row=5, column=2)
     elif oyuncu1 == image_list[2] and oyuncu2 == image_list[0]:
         w_label = Label(root, text="Player 2 win")
         w_label.grid(row=4, column=1)
         w_label.place(x=250, y=250)
+        score2 +=1
+        user2_score = Label(root, text=score2)
+        user2_score.grid(row=5, column=2)
     elif oyuncu1 == image_list[1] and oyuncu2 == image_list[2]:
         w_label = Label(root, text="Player 2 win")
         w_label.grid(row=4, column=1)
         w_label.place(x=250, y=250)
+        score2 +=1
+        user2_score = Label(root, text=score2)
+        user2_score.grid(row=5, column=2)
     elif oyuncu1 == image_list[1] and oyuncu2 == image_list[0]:
         w_label = Label(root, text="Player 1 win")
         w_label.grid(row=4, column=1)
         w_label.place(x=250, y=250)
+        score1 +=1
+        user1_score = Label(root, text=score1)
+        user1_score.grid(row=5, column=0)
     elif oyuncu1 == image_list[2] and oyuncu2 == image_list[1]:
         w_label = Label(root, text="Player 1 win")
         w_label.grid(row=4, column=1)
         w_label.place(x=250, y=250)
+        score1 +=1
+        user1_score = Label(root, text=score1)
+        user1_score.grid(row=5,column=0)
     else:
         print("Game Over")
+
+
 
 
 myLabel2 = Label(root, text="")
@@ -100,10 +130,23 @@ myLabel2.grid(row=0, column=1)
 
 
 
-mybutton2 = Button(root, text="PLAY", command=mix2)
-mybutton2.grid(row=3, column=1 )
+for i in range(0,100):
+
+    mybutton2 = Button(root, text="PLAY", command=mix2)
+    mybutton2.grid(row=3, column=1)
+    mybutton2.place(x=250, y=225)
+
+    mybutton2.invoke()
+
+    if score1 == 10:
+        print("Game Over")
+        break
+    elif score2 == 10:
+        print("Game Over")
+        break
+    else:
+        continue
 
 
-mybutton2.place(x=250, y=225)
 
 root.mainloop()
