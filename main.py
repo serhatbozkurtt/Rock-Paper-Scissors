@@ -20,62 +20,72 @@ myLabel1 = Label(root, text=image_list)
 
 def mix1():
     global myLabel1
-    random.shuffle(image_list)
+    text = random.choice(image_list)
     myLabel1.grid_forget()
     myLabel1.destroy()
-    myLabel1 = Label(root, image=image_list[0])
+    #myLabel1 = Label(root, image=image_list[0])
+    myLabel1 = Label(root, image=text)
     myLabel1.grid(row=0, column=0)
-    text = image_list[0]
+    #text = image_list[0]
     return text
 
 
 def mix2():
     global myLabel2
 
-    random.shuffle(image_list)
+    user_choice = random.choice(image_list)
     myLabel2.grid_forget()
     myLabel2.destroy()
-    myLabel2 = Label(root, image=image_list[0])
+    #myLabel2 = Label(root, image=image_list[0])
+    myLabel2 = Label(root, image=user_choice)
     myLabel2.grid(row=0, column=1)
     mix1()
-    text = image_list[0]
+    #text = image_list[0]
 
-    winwin(text)
+    winwin(user_choice)
 
+w_label = Label(root, text="")
 
 def winwin(text):
+    global w_label
     oyuncu1 = mix1()
     oyuncu2 = text
 
-    w_label = Label(root, text="")
-    w_label.grid_forget()
-    w_label.destroy()
 
-    print(oyuncu1)
+    w_label.grid_forget()
+    # w_label.destroy()
+
+    # print(oyuncu1)
+    # print(oyuncu2)
+    # print(image_list[0])
+    # print(image_list[1])
+    # print(image_list[2])
 
     if oyuncu1 == oyuncu2:
         w_label = Label(root, text="Berabere")
         w_label.grid(row=4, column=1)
-    elif oyuncu1 == "pyimage1" and oyuncu2 == "pyimage3":
+    elif oyuncu1 == image_list[0] and oyuncu2 == image_list[2]:
         w_label = Label(root, text="1. oyuncu kazandı")
         w_label.grid(row=4, column=1)
-    elif oyuncu1 == "pyimage1" and oyuncu2 == "pyimage2":
+    elif oyuncu1 == image_list[0] and oyuncu2 == image_list[1]:
         w_label = Label(root, text="2. oyuncu kazandı")
         w_label.grid(row=4, column=1)
-    elif oyuncu1 == "pyimage2" and oyuncu2 == "pyimage3":
+    elif oyuncu1 == image_list[2] and oyuncu2 == image_list[0]:
         w_label = Label(root, text="2. oyuncu kazandı")
         w_label.grid(row=4, column=1)
-    elif oyuncu1 == "pyimage2" and oyuncu2 == "pyimage1":
+    elif oyuncu1 == image_list[1] and oyuncu2 == image_list[2]:
+        w_label = Label(root, text="2. oyuncu kazandı")
+        w_label.grid(row=4, column=1)
+    elif oyuncu1 == image_list[1] and oyuncu2 == image_list[0]:
         w_label = Label(root, text="1. oyuncu kazandı")
         w_label.grid(row=4, column=1)
-    elif oyuncu1 == "pyimage3" and oyuncu2 == "pyimage2":
+    elif oyuncu1 == image_list[2] and oyuncu2 == image_list[1]:
         w_label = Label(root, text="1. oyuncu kazandı")
         w_label.grid(row=4, column=1)
     else:
         print("oyun bitti")
 
-
-myLabel2 = Label(root, text="user choose field")
+myLabel2 = Label(root, text="")
 myLabel2.grid(row=0, column=1)
 
 # mybutton1 = Button(root, text="1. yi Değiştir", command=mix1)
