@@ -8,9 +8,9 @@ root.geometry("600x300")
 root.resizable(width=False, height=False)
 
 
-rock = ImageTk.PhotoImage(Image.open("C:/Users/Serhat/Documents/GitHub/Rock-Paper-Scissors/Images/rock.png"))
-paper = ImageTk.PhotoImage(Image.open("C:/Users/Serhat/Documents/GitHub/Rock-Paper-Scissors/Images/paper.png"))
-scissors = ImageTk.PhotoImage(Image.open("C:/Users/Serhat/Documents/GitHub/Rock-Paper-Scissors/Images/scissors.png"))
+rock = ImageTk.PhotoImage(Image.open("rock.png"))
+paper = ImageTk.PhotoImage(Image.open("paper.png"))
+scissors = ImageTk.PhotoImage(Image.open("scissors.png"))
 
 image_list = [rock, paper, scissors]
 
